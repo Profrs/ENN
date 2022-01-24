@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("index_copy.html")
 
 
 @app.route("/input", methods=["POST"])
@@ -21,4 +21,4 @@ def input():
 
     result = neuroid.run(umbr, beta, kr, maxcount)
 
-    return render_template('index.html', results=result)
+    return render_template('index_copy.html', results=result)
