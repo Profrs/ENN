@@ -213,17 +213,57 @@
          </div>
          <div class="container">
          <div class="row">
-            <!-- <div class="col-sm-2" id = "ratioSliders">
-               <p>Ratio of training to<br>test data: </p>
-               <br>
-               <input type="range" id="myRange" value="1" max="100"><span id="rangeValue">1</span>
-               <p>Noise: 0 </p>
-               <br>
-               <input type="range" id="myRange" value="1" max="100"><span id="rangeValue">1</span>
-               <p>Batch Size: 0 </p>
-               <br>
-               <input type="range" id="myRange" value="1" max="100"><span id="rangeValue">1</span>
-            </div> -->
+            <div class="col-sm-1" id = "customizeNeuroidGroup">
+               <div class="row">
+               <h6>Configure Neuroids: </h6>
+               <form>
+                 <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="Independent" checked>
+                    <label class="form-check-label" for="Independent">
+                      Independent Neuroids
+                    </label>
+                  
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="Connected">
+                    <label class="form-check-label" for="Connected">
+                      Connected Neuroids
+                    </label>
+
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="Circut">
+                    <label class="form-check-label" for="Connected">
+                      Circut of Neuroids
+                    </label>
+                  
+                 </div> 
+              </form>
+                 <br>
+
+                 <h6>Configure Inputs: </h6>
+                 <form>
+                    
+                
+                 <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="inputstyle1" checked>
+                    <label class="form-check-label" for="inputstyle1">
+                      Input Style 1
+                    </label>
+                  
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="inputstyle2">
+                    <label class="form-check-label" for="inputstyle2">
+                      Input Style 2
+                    </label>
+
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="inputstyle3">
+                    <label class="form-check-label" for="inputstyle3">
+                      Input Style 3
+                    </label>
+
+                 </div> 
+                   </form>
+              </div>
+            </div> 
+            <div class="col-1" id = "spacing"> 
+               
+            </div>
             <div class="col-sm-1" id = "leftBoxes">
                <span>
                   <i class="fas fa-square fa-5x" id="neuroid1"></i>
@@ -256,6 +296,8 @@
                      </div>
                   </div>
                </span>
+            </div>
+            <div class="col-sm-1" id = "leftBoxes">
                <span>
                   <i class="fas fa-square fa-5x" id="neuroid2"></i>
                   <div class="btn-group dropright">
@@ -288,10 +330,12 @@
                      </div>
                   </div>
                </span>
+            </div>
+            <div class="col-sm-1" id = "leftBoxes">
                <span>
-                  <i class="fas fa-square fa-5x" id="neuroid3" style="color: lightgray;"> </i>
+                  <i class="fas fa-square fa-5x" id="neuroid3"> </i>
                   <div class="btn-group dropright">
-                     <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
+                     <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      X3
                      </button>
                      <div class="dropdown-menu">
@@ -319,14 +363,15 @@
                      </div>
                   </div>
                </span>
-               <span>
+            </div>
+               <!-- <span>
                   <i class="fas fa-square fa-5x" id="neuroid4" style="color: lightgray;"></i>
                   <div class="btn-group dropright">
                      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
                      X4
                      </button>
                      <div class="dropdown-menu">
-                        <!-- Dropdown menu links -->
+                        
                         <form class="px-4 py-3">
                            <div class="form-group">
                               <label for="KrValue">Kr</label>
@@ -349,15 +394,15 @@
                         </form>
                      </div>
                   </div>
-               </span>
-               <span>
+               </span> -->
+               <!-- <span>
                   <i class="fas fa-square fa-5x" id="neuroid5" style="color: lightgray;"></i>
                   <div class="btn-group dropright">
                      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
                      X5
                      </button>
                      <div class="dropdown-menu">
-                        <!-- Dropdown menu links -->
+                        
                         <form class="px-4 py-3">
                            <div class="form-group">
                               <label for="KrValue">Kr</label>
@@ -380,29 +425,29 @@
                         </form>
                      </div>
                   </div>
-               </span>
-            </div>
-            <div class="col-sm-2" id="NeuroidVisualization">
-               <!-- <svg id="connections">
+               </span> -->
+            
+            <!-- <div class="col-sm-2" id="NeuroidVisualization">
+               <svg id="connections">
                   <line x1="0" y1="35" x2="200" y2="35"  style="stroke:pink;stroke-width:4"/>
                   <line x1="0" y1="35" x2="200" y2="150"  style="stroke:pink;stroke-width:4"/>
                   <line x1="0" y1="150" x2="200" y2="35"  style="stroke:lightblue;stroke-width:4"/>
                   <line x1="0" y1="145" x2="200" y2="145"  style="stroke:lightblue;stroke-width:4"/>
-               </svg> -->
+               </svg>
 
             </div>
             <div class="col-sm-1" id = "rightBoxes">
                <div class="row" id="neuronArea">
-                  <!-- <div class="col" id="neuron">
+                  <div class="col" id="neuron">
                      <span >
                      <i class="fas fa-square fa-5x" id="innerNeuroid1"></i>
                      <br>
                      <i class="fas fa-square fa-5x" id="innerNeuroid2"></i>
                      </span>
-                  </div> -->
+                  </div>
                </div>
             </div>
-            <!-- <div class="col-1">
+            <div class="col-1">
                <div id="hovercard">
                   <svg id="output1">
                   <line x1="0" y1="35" x2="200" y2="35"  style="stroke:pink;stroke-width:4"/>
@@ -412,7 +457,10 @@
                   <div><span class="type"></span><span class="value"></span><span><input type="number"/></span>.</div>
                </div>
             </div> -->
-            <div class="col-5" id = "output" >
+            <div class="col-1" id = "spacing"> 
+               
+            </div>
+            <div class="col-6" id = "output" >
                <div class="output">
                   <canvas id="outputChart" width="700" height="700" style="background: black;"></canvas>
                   <p id="outputData"style="color: #F8F8F8;">
@@ -469,6 +517,7 @@
                   </div>
                </div>
             </div>
+         </div>
          </div>
          <div id="spacing">
             <div style="padding: 10px;"></div>
