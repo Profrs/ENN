@@ -22,3 +22,5 @@ def input():
     result = neuroid.run(umbr, beta, kr, maxcount)
 
     return render_template('index_copy.html', results=result)
+
+
