@@ -213,7 +213,7 @@
          </div>
          <div class="container">
          <div class="row">
-            <div class="col-sm-1" id = "customizeNeuroidGroup">
+            <div class="col-1" id = "customizeNeuroidGroup">
                <div class="row">
                <h6>Configure Neuroids: </h6>
                <form>
@@ -264,115 +264,50 @@
             <div class="col-1" id = "spacing"> 
                
             </div>
-            <div class="col-sm-3" id = "Neuroids">
-               
-               <div class="row"> 
-
-                  <div class="col">
-                     <i class="fas fa-square fa-5x" id="neuroid1"></i>
-                     <h3> X1 </h3>
-                  </div>
-                  <div class="col" id = "customizeNeuroid">
-                        <form class="row g-3 " action="{{ url_for('input') }}" method="POST">
-                             <div class="col">
-                               
-                               <div class="input-group">
-                                 <label for="Kr">Kr</label>
-                                 <input type="text" class="form-control" name="KrValue" id="KrValue">
-                                 <label for="Umbr">Umbr</label>
-                                 <input type="text" class="form-control" name="umbrValue" id="umbrValue">
-                               </div>
-                              
-                               
-                               <div class="input-group">
-                                 <label for="Beta">Beta</label>
-                                 <input type="text" class="form-control" name="BetaValue" id="BetaValue">
-                                 <label for="MaxCount">Max Count</label>
-                                 <input type="text" class="form-control" name="maxcountValue" id="maxcountValue">
-                               
-                                 
-                               </div>
-                             </div>
-                             <button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid">Submit</button>
-                        </form>
-
+            <div class="col-1" id = "Neuroids">
                   
-                  </div>
-               </div>
+                     <div class="row"> 
+                        <i class="fas fa-square fa-5x" id="neuroid1"></i>
+                        <h3> X1 </h3>
+                     </div>
+                     <div class="row"> 
+                        <i class="fas fa-square fa-5x" id="neuroid2"></i>
+                        <h3> X2 </h3>
+                     </div>
+                     <div class="row"> 
+                        <i class="fas fa-square fa-5x" id="neuroid3"></i>
+                        <h3> X3 </h3>
+                     </div>
+         </div>
+         <div lass="col-3" id = "Neuroids">
+                  <form class="row" action="{{ url_for('input') }}" method="POST">
+                     <div class="col">
+                        <label for="Kr">Kr</label>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" name="KrValue" id="KrValue">
+                                  </div>
+                        <label for="Umbr">Umbr</label>
+                                 <div class="input-group">
+                                    <input type="text" class="form-control" name="umbrValue" id="umbrValue">
+                                  </div>
+                        <label for="Beta">Beta</label>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" name="BetaValue" id="BetaValue">
+                                  </div>
+                        <label for="MaxCount">Max Count</label>
+                                 <div class="input-group">
+                                    <input type="text" class="form-control" name="maxcountValue" id="maxcountValue">
+                                  </div>
+                       <button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid">Submit</button>             
+                      </div>
+                            
+                  </form>
 
-            <div class="row"> 
-            
                
-                  
-
-                  <div class="col">
-                     <i class="fas fa-square fa-5x" id="neuroid2"></i>
-                     <h3> X2 </h3>
-                  </div>
-                  <div class="col" id = "customizeNeuroid">
-                        <form class="row g-3 " action="{{ url_for('input') }}" method="POST">
-                             <div class="col">
-                               
-                               <div class="input-group">
-                                 <label for="Kr">Kr</label>
-                                 <input type="text" class="form-control" name="KrValue2" id="KrValue2">
-                                 <label for="Umbr">Umbr</label>
-                                 <input type="text" class="form-control" name="umbrValue2" id="umbrValue2">
-                               </div>
-                              
-                               
-                               <div class="input-group">
-                                 <label for="Beta">Beta</label>
-                                 <input type="text" class="form-control" name="BetaValue2" id="BetaValue2">
-                                 <label for="MaxCount">Max Count</label>
-                                 <input type="text" class="form-control" name="maxcountValue2" id="maxcountValue2">
-                               
-                                 
-                               </div>
-                             </div>
-                             <button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid">Submit</button>
-                        </form>
-
-                  
-                  </div>
                
+
             
          </div>
-         <div class="row"> 
-
-                  <div class="col">
-                     <i class="fas fa-square fa-5x" id="neuroid3"></i>
-                     <h3> X3 </h3>
-                  </div>
-                  <div class="col" id = "customizeNeuroid">
-                        <form class="row g-3 " action="{{ url_for('input') }}" method="POST">
-                             <div class="col">
-                               
-                               <div class="input-group">
-                                 <label for="Kr">Kr</label>
-                                 <input type="text" class="form-control" name="KrValue" id="KrValue">
-                                 <label for="Umbr">Umbr</label>
-                                 <input type="text" class="form-control" name="umbrValue" id="umbrValue">
-                               </div>
-                              
-                               
-                               <div class="input-group">
-                                 <label for="Beta">Beta</label>
-                                 <input type="text" class="form-control" name="BetaValue" id="BetaValue">
-                                 <label for="MaxCount">Max Count</label>
-                                 <input type="text" class="form-control" name="maxcountValue" id="maxcountValue">
-                               
-                                 
-                               </div>
-                             </div>
-                             <button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid">Submit</button>
-                        </form>
-
-                  
-                  </div>
-               </div>
-         
-      </div>
                <!-- <span>
                   <i class="fas fa-square fa-5x" id="neuroid4" style="color: lightgray;"></i>
                   <div class="btn-group dropright">
@@ -466,13 +401,10 @@
                   <div><span class="type"></span><span class="value"></span><span><input type="number"/></span>.</div>
                </div>
             </div> -->
-            <div class="col-1" id = "spacing"> 
-               
-            </div>
             <div class="col-6" id = "output" >
                <div class="output">
                   <canvas id="outputChart" width="700" height="700" style="background: black;"></canvas>
-                  <p id="outputData"style="color: black;"> <!--#F8F8F8; -->
+                  <p id="outputData"style="color: #F8F8F8;"> <!--#F8F8F8; -->
                      {% if results is defined %}
                      {{ results }}	
                      {% endif %}
@@ -485,23 +417,37 @@
                      	for (var i = 0; i <= values.length; i++) {
                      		time[i] = i;
                      	}
+                     const data = {
+                       labels: time,
+                       datasets: [
+                         {
+                           label: 'Neuroid 1',
+                           data: values,
+                           borderColor: "rgb(255, 215, 0)",
+                           backgroundColor: "rgb(255, 215, 0)"
+                         },
+                         {
+                           label: 'Neuroid 2',
+                           data: values,
+                           borderColor: "rgb(240, 82, 40)",
+                           backgroundColor: "rgb(240, 82, 40)"
+                         },
+                         {
+                           label: 'Neuroid 3',
+                           data: values,
+                           borderColor: "rgb(0,  102,   102)",
+                           backgroundColor: "rgb(0, 102,   102)"
+                         }
+                       ]
+                     }
                      console.log(time);
                      console.log(values);
                      	
                      var ctx = document.getElementById('outputChart').getContext('2d');
                      var outputChart = new Chart(ctx, {
                          type: "line",
-                     	  data: {
-                     	  	labels: time,
-                     	  	datasets: [{
-                     	  			  label: "Neuroid 1 Output",
-                     			      backgroundColor: "rgb(255, 215, 0)",
-                     			      borderColor: "rgb(255, 215, 0)",
-                     			      pointStyle: "line",
-                     			      data: values
-                     			    }]
-                     	  },
-                     	  options: {
+                     	 data: data,
+                     	 options: {
                      	  	scales: {
                                  y: {
                                      beginAtZero: true
@@ -515,6 +461,7 @@
                             						enabled: false
                         						 }
                      	  }
+
                      });
                      
                      

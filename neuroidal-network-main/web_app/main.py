@@ -20,6 +20,8 @@ def input():
     maxcount = int(request.form["maxcountValue"])
 
     result = neuroid.run(umbr, beta, kr, maxcount)
+    #result = neuroid.run(umbr, beta, kr, maxcount)
+    #result = neuroid.run(umbr, beta, kr, maxcount)
 
     return render_template('index_copy.html', results=result)
 
