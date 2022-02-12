@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+      <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/6852c7cebf.js" crossorigin="anonymous"></script> 
+      <!-- import  FontAwesome For icons-->
+      <script type="text/javascript" src="project.js"></script> <!-- connect JavaScript functions-->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script> 
+      <!-- import script for chart.js -->
+      <script>
+         $(document).ready(function(){
+         	$("#number").change(function(){
+         		var number = $(this).val();
+         		var oldValue = $("#neuronCount").text();
+         		if(oldValue < number){
+         			$("#neuronCount").text(number);
+         			$( "#neuron" ).clone().appendTo( "#neuronArea" );
+         			main();
+         		} else if(oldValue > number){
+         			$( "#neuron" ).remove();
+         		}
+         	});
+         });
+      </script>
+      <title>Neuroidal Simulator</title>
+      <style>
+         .input-group-prepend {
+         color:#808080;
+         }
+         #body {
+         background-color:#F8F8F8;
+         overflow-x: hidden;
+         }
+         #break-line {
+         background-color:#F0F0F0;
+         height: 5px;
+         width: 100%;
+         }
+         .header-fill {
+         width:100%;
+         overflow: hidden;
+         background: #F39CB3;
+         }
+         .body-fill {
+         width:100%;
+         overflow: hidden;
+         background: #F8F8F8;
+         }
+         #numberOfNeuroids, #hiddenLayers, #weights {
+         display: table-cell; 
+         width:100%;
+         }
+         .mr-sm-2 {
+         display: table-cell;
+         width: 1px;
+         }
+         .form-row {
+         display: table;
+         }
+      </style>
+   </head>
+   <body onload="main()">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> <!-- import Bootstrap JS -->
+      <div class="header-fill">
+         <div class="container">
+            <br>
+            <h1 style="text-align: center; color: white;"><b>Neuroidal Network Simulation</b></h1>
+            <!-- <h1 style="text-align: center; color: white;">It is a Neuroidal Simulator for Detecting Arrhythmia.</h1> -->
+            <br>
+         </div>
+      </div>
+      <br>
+      <div class="container" id="headerControls" >
+         <div class="row">
+            <div class="col-4" id="playControls">
+               <h5> Explanation</h5>
+               <p> This space can be used to explain what the attributes of the neuroid mean and how to customize them to get the desired output. </p>
+               <!-- replay, play, fast forward buttons for the training -->
+               <!-- <div class="btn-group" role="group"> 
+                  <button type="button" class="btn btn-danger btn-lg" id="replayButton"> 
+                  <i class="fas fa-redo"></i> 
+                  </button>
+                  <button type="button" class="btn btn-danger btn-lg" id="playButton"> 
+                  <i class="fas fa-play"></i> 
+                  </button>
+                  <button type="button" class="btn btn-danger btn-lg" id="fastForwardButton"> 
+                  <i class="fas fa-fast-forward"></i>
+                  </button>
+               </div> -->
+            </div>
+            <div class="col-4">
+               <h5> Adding Interaction between layers</h5>
+               <p>
+                  This space can be used to explain how to model interaction between layers
+               </p>
+               <!-- <div class="input-group-prepend">
+                  <p>Learning Rate</p>
+               </div>
+               <select class="custom-select" id="learningRateSelect">
+                  <option selected>Choose...</option>
+                  <option value="0.1">0.1</option>
+                  <option value="0.2">0.2</option>
+                  <option value="0.3">0.3</option>
+               </select> -->
+            </div>
+            <div class="col-4">
+               <h5>Output</h5>
+               <p>This space can be used to describe what the output shows</p>
+               <!-- <div class="input-group-prepend">
+                  <p>Activation</p>
+               </div>
+               <select class="custom-select" id="activationSelect">
+                  <option selected>Choose...</option>
+                  <option value="Tanh">Tanh</option>
+               </select> -->
+            </div>
+            <div class="col-2">
+               <!-- <div class="input-group-prepend">
+                  <p>Regularization</p>
+               </div>
+               <select class="custom-select" id="regularizationSelect">
+                  <option selected>Choose...</option>
+                  <option value="None">None</option>
+               </select> -->
+            </div>
+            <div class="col-2">
+               <!-- <div class="input-group-prepend">
+                  <p>Regularization Rate</p>
+               </div>
+               <select class="custom-select" id="regularizationRateSelect">
+                  <option selected>Choose...</option>
+                  <option value="0">0</option>
+               </select> -->
+            </div>
+            <div class="col-2">
+               <!-- <div class="input-group-prepend">
+                  <p>Problem Type</p>
+               </div>
+               <select class="custom-select" id="problemTypeSelect">
+                  <option selected>Choose...</option>
+                  <option value="Classification">Classification</option>
+               </select> -->
+            </div>
+            <!-- <button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid">Submit</button> -->
+         </div>
+      </div>
+      <br>
+      <div id = "break-line"></div>
+      <div class = "body-fill">
+         <div class="container" id="body" >
+            <br>
+            <!-- <div class="row" id = "submissionForms">
+               <div class="col-3">
+                  <form action="{{ url_for('input') }}" method="POST">
+                     <div class="form-row align-items-center" style="display: table">
+                        <label class="mr-sm-2" for="numberOfNeuroids">Number&nbsp;of&nbsp;Neuroids:&nbsp;</label>
+                        <input type="text" name="numberOfNeuroids" id="numberOfNeuroids">
+                     </div>
+               </div>
+               <div class="col-3">
+               <div class="form-row align-items-center" style="display: table">			    
+               <label class="mr-sm-2" for="hiddenLayers">Number&nbsp;of&nbsp;Hidden&nbsp;Layers:&nbsp;</label>
+               <input type="text" name="hiddenLayers" id="hiddenLayers">
+               </div>
+               </div>
+               <div class="col-5">
+               <div class="form-row align-items-center">
+               <label class="mr-sm-2" for="weights">Weights&nbsp;for&nbsp;Layers&nbsp;(comma&nbsp;separated&nbsp;list):&nbsp;</label>
+               <input type="text" name="weights" id="weights">
+               </div>
+               </div>
+               <div class="col-1">
+               <button type="submit" id="Layers" class="btn btn-danger" onclick="getWeights()"> Submit</button>
+               </div>
+               </form>
+            </div>
+         </div>
+         <br/> -->
+         <div class="container">
+         <div class="row">
+            <div class="col-sm-3">
+               
+            </div>
+            <div class="col-sm-5">
+               <h3></h3>
+            </div>
+            <div class="col-sm-3">
+               
+            </div>
+            <!-- <div class="col-sm-2">
+               <h5>FEATURE</h5>
+               <p>Which Properties<br> Do you want to feed in?</p>
+            </div>
+            <div class="col-sm-8">
+               <h5>1 HIDDEN LAYER</h5>
+               <hr noshade="">
+               <input type="number" id="number" value="1" min="1" max="3" class="col-sm-4"/>
+               <p><span id="neuronCount">1</span> Neurons</p>
+               </br> </br>
+            </div>
+            <div class="col-sm-2">
+               <h5>OUTPUT</h5>
+               <p>Test loss: 0.5<br> Training loss: 0.5</p>
+            </div> -->
+         </div>
+         </div>
+         <div class="container">
+         <div class="row">
+            <div class="col-2" id = "neuroid1">
+               <div class="row"> 
+                        <i class="fas fa-square fa-5x" id="neuroid1"></i>
+                        
+               </div>
+               <h3> X1 </h3>
+                     
+            </div> 
+            <div class="col-2" id = "neuroid2"> 
+               <div class="row"> 
+                        <i class="fas fa-square fa-5x" id="neuroid2"></i>
+                        
+               </div>
+               <h3> X2 </h3>
+            </div>
+            <div class="col-2" id = "neuroid3">
+                  <div class="row"> 
+                        <i class="fas fa-square fa-5x" id="neuroid3"></i>
+                        
+                  </div>
+                  <h3> X3 </h3>   
+         </div>
+         
+               <!-- <span>
+                  <i class="fas fa-square fa-5x" id="neuroid4" style="color: lightgray;"></i>
+                  <div class="btn-group dropright">
+                     <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
+                     X4
+                     </button>
+                     <div class="dropdown-menu">
+                        
+                        <form class="px-4 py-3">
+                           <div class="form-group">
+                              <label for="KrValue">Kr</label>
+                              <input type="text" class="form-control" name="KrValue" id="KrValue">
+                           </div>
+                           <div class="form-group">
+                              <label for="umbrValue">umbr</label>
+                              <input type="text" class="form-control" name="umbrValue" id="umbrValue">
+                           </div>
+                           <div class="form-group">
+                              <label for="BetaValue">Beta</label>
+                              <input type="text" class="form-control" name="BetaValue" id="BetaValue">
+                           </div>
+                           <div class="form-group">
+                              <label for="maxcountValue">Max Count</label>
+                              <input type="text" class="form-control" name="maxcountValue" id="maxcountValue">	
+                           </div>
+                           <button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid" 
+                              onclick="getNeuroidProperties(4)">Submit</button>
+                        </form>
+                     </div>
+                  </div>
+               </span> -->
+               <!-- <span>
+                  <i class="fas fa-square fa-5x" id="neuroid5" style="color: lightgray;"></i>
+                  <div class="btn-group dropright">
+                     <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
+                     X5
+                     </button>
+                     <div class="dropdown-menu">
+                        
+                        <form class="px-4 py-3">
+                           <div class="form-group">
+                              <label for="KrValue">Kr</label>
+                              <input type="text" class="form-control" name="KrValue" id="KrValue">
+                           </div>
+                           <div class="form-group">
+                              <label for="umbrValue">umbr</label>
+                              <input type="text" class="form-control" name="umbrValue" id="umbrValue">
+                           </div>
+                           <div class="form-group">
+                              <label for="BetaValue">Beta</label>
+                              <input type="text" class="form-control" name="BetaValue" id="BetaValue">
+                           </div>
+                           <div class="form-group">
+                              <label for="maxcountValue">Max Count</label>
+                              <input type="text" class="form-control" name="maxcountValue" id="maxcountValue">	
+                           </div>
+                           <button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid" 
+                              onclick="getNeuroidProperties(5)">Submit</button>
+                        </form>
+                     </div>
+                  </div>
+               </span> -->
+            
+            <!-- <div class="col-sm-2" id="NeuroidVisualization">
+               <svg id="connections">
+                  <line x1="0" y1="35" x2="200" y2="35"  style="stroke:pink;stroke-width:4"/>
+                  <line x1="0" y1="35" x2="200" y2="150"  style="stroke:pink;stroke-width:4"/>
+                  <line x1="0" y1="150" x2="200" y2="35"  style="stroke:lightblue;stroke-width:4"/>
+                  <line x1="0" y1="145" x2="200" y2="145"  style="stroke:lightblue;stroke-width:4"/>
+               </svg>
+
+            </div>
+            <div class="col-sm-1" id = "rightBoxes">
+               <div class="row" id="neuronArea">
+                  <div class="col" id="neuron">
+                     <span >
+                     <i class="fas fa-square fa-5x" id="innerNeuroid1"></i>
+                     <br>
+                     <i class="fas fa-square fa-5x" id="innerNeuroid2"></i>
+                     </span>
+                  </div>
+               </div>
+            </div>
+            <div class="col-1">
+               <div id="hovercard">
+                  <svg id="output1">
+                  <line x1="0" y1="35" x2="200" y2="35"  style="stroke:pink;stroke-width:4"/>
+                  <line x1="0" y1="145" x2="200" y2="145"  style="stroke:lightblue;stroke-width:4"/>
+                   </svg>
+                  <div style="font-size:12px">Current Weight/Bias is 0.2</div>
+                  <div><span class="type"></span><span class="value"></span><span><input type="number"/></span>.</div>
+               </div>
+            </div> -->
+            <div class="col-1" id="run_simulation">
+               <div class="row">
+                  <form class="row" action="{{ url_for('neuroid_group_output') }}" method="POST">
+                     <button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid">Run</button>                         
+                </form>
+               </div>
+            </div>
+            <div class="col-5" id = "output" >
+               <div class="output">
+                  <canvas id="outputChart" width="700" height="700" style="background: black;"></canvas>
+                  <p id="outputData"style="color: #F8F8F8;"> <!--#F8F8F8; -->
+                     {% if results is defined %}
+                     {{ results }}	
+                     {% endif %}
+                  </p>
+                  <script>
+                     var dataList = document.getElementById('outputData').innerHTML;
+                     console.log(dataList)
+                     var values = dataList.split(',');
+                     var time = [];
+                     	for (var i = 0; i <= values.length; i++) {
+                     		time[i] = i;
+                     	}
+                     const data = {
+                       labels: time,
+                       datasets: [
+                         {
+                           label: 'Neuroid 1',
+                           data: values,
+                           borderColor: "rgb(255, 215, 0)",
+                           backgroundColor: "rgb(255, 215, 0)"
+                         },
+                         {
+                           label: 'Neuroid 2',
+                           data: values,
+                           borderColor: "rgb(240, 82, 40)",
+                           backgroundColor: "rgb(240, 82, 40)"
+                         },
+                         {
+                           label: 'Neuroid 3',
+                           data: values,
+                           borderColor: "rgb(0,  102,   102)",
+                           backgroundColor: "rgb(0, 102,   102)"
+                         }
+                       ]
+                     }
+                     console.log(time);
+                     console.log(values);
+                     	
+                     var ctx = document.getElementById('outputChart').getContext('2d');
+                     var outputChart = new Chart(ctx, {
+                         type: "line",
+                     	 data: data,
+                     	 options: {
+                     	  	scales: {
+                                 y: {
+                                     beginAtZero: true
+                                 }
+                             },
+                             legend: {
+                            						display: true
+                            						
+                         						},
+                         				    tooltips: {
+                            						enabled: false
+                        						 }
+                     	  }
+
+                     });
+                     
+                     
+                  </script>
+                  <!-- <p style="margin-right: 0px">Colors shows data, neuron <br> and weight values</p>
+                  <input type="checkbox" id="testdata" name="testdata">
+                  <label for="testdata" style="margin-right: 80px">Show test data</label><br>
+                  <input type="checkbox" id="discretize" name="discretize">
+                  <label for="discretize" style="margin-right: 63px">Discretize output</label><br> -->
+                  </div>
+               </div>
+            </div>
+         </div>
+         </div>
+         <div id="spacing">
+            <div style="padding: 10px;"></div>
+         </div>
+      </div>
+      
+      </div>
+      <div class="container" id="footer">
+         <div class="row">
+            <div class="col-sm-2" style="padding: 10px">
+            <h6>Notes</h6>
+         </div>
+         </div>
+      </div>
+      <!--import Bootstrap necessary JS-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script>
+         (function() {
+           		mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
+         })();
+      </script>
+   </body>
+</html>

@@ -80,6 +80,14 @@ class Neuroid:
 
         return self.nt_out_stream
 
+def use_prev_output(output, umbr, beta, kr, maxcount, log=False):
+    inputs = output
+    weights = [0 for i in range(2001)]
+
+    neuroid = Neuroid(umbr=umbr, beta=beta, kr=kr, maxcount=maxcount, t=1, log=log)
+    neuroid.run_neuroid(inputs, weights)
+
+    return {"output": neuroid.nt_out_stream}
 
 def run(umbr, beta, kr, maxcount, log=False):
     inputs = [round(i / 1000, 3)for i in range(1001)] + [round(i / 1000, 3) for i in reversed(range(1000))]
