@@ -262,37 +262,43 @@
                   </p>
                   <script>
                      var dataList = document.getElementById('outputData').innerHTML;
-                     console.log(dataList)
-                     var values = dataList.split(',');
+                     console.log(typeof dataList);
+                     dataList = dataList.split('@');
+                     var values1 = dataList[0].split(',');
+                     console.log(values1)
+                     var values2 = dataList[1].split(',');
+                     console.log(values2)
+                     var values3 = dataList[2].split(',');
+                     console.log(values3)
+
                      var time = [];
-                     	for (var i = 0; i <= values.length; i++) {
+                     	for (var i = 0; i <= values1.length; i++) {
                      		time[i] = i;
                      	}
                      const data = {
                        labels: time,
                        datasets: [
                          {
-                           label: 'Neuroid 1',
-                           data: values,
-                           borderColor: "rgb(255, 215, 0)",
-                           backgroundColor: "rgb(255, 215, 0)"
+                           label: 'Neuroid 3',
+                           data: values3,
+                           borderColor: "rgb(0,  102,   102)",
+                           backgroundColor: "rgb(0, 102,   102)"
                          },
                          {
                            label: 'Neuroid 2',
-                           data: values,
+                           data: values2,
                            borderColor: "rgb(240, 82, 40)",
                            backgroundColor: "rgb(240, 82, 40)"
                          },
                          {
-                           label: 'Neuroid 3',
-                           data: values,
-                           borderColor: "rgb(0,  102,   102)",
-                           backgroundColor: "rgb(0, 102,   102)"
+                           label: 'Neuroid 1',
+                           data: values1,
+                           borderColor: "rgb(255, 215, 0)",
+                           backgroundColor: "rgb(255, 215, 0)"
                          }
                        ]
                      }
-                     console.log(time);
-                     console.log(values);
+                     
                      	
                      var ctx = document.getElementById('outputChart').getContext('2d');
                      var outputChart = new Chart(ctx, {

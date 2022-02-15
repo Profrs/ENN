@@ -51,17 +51,22 @@ def neuroid_group():
 
 @app.route("/neuroid_group.html", methods=["POST"])
 def neuroid_group_output():
+    result = []
     inputs = [round(i / 1000, 3)for i in range(1001)] + [round(i / 1000, 3) for i in reversed(range(1000))]
     weights = [0 for i in range(len(inputs))]
     neuroid_1 = neuroid.Neuroid(umbr=0.1, beta=1.25, kr=2, maxcount=24, t=1)
     neuroid_1_output = neuroid_1.run_neuroid(inputs = inputs, weights = weights)
+    result.extend(neuroid_1_output)
+    result.append('@')
     weights = [0 for i in range(len(neuroid_1_output))]
     neuroid2 = neuroid.Neuroid(umbr=0.1, beta=1.25, kr=2, maxcount=24, t=1)
     neuroid_2_output = neuroid2.run_neuroid(inputs = neuroid_1_output, weights = weights)
+    result.extend(neuroid_2_output)
+    result.append('@')
     weights = [0 for i in range(len(neuroid_2_output))]
     neuroid3 = neuroid.Neuroid(umbr=0.1, beta=1.25, kr=2, maxcount=24, t=1)
     neuroid_3_output = neuroid3.run_neuroid(inputs = neuroid_2_output, weights = weights)
-    result = neuroid_3_output
+    result.extend(neuroid_3_output)
     #result = neuroid.run(umbr, beta, kr, maxcount)
     #result = neuroid.run(umbr, beta, kr, maxcount)
 
