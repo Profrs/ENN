@@ -221,33 +221,36 @@
                      var ctx = canvas.getContext("2d");
                      ctx.fillStyle = "#000000";
                      ctx.fillRect(0, 0, 75, 75);
+                     // x1
                      ctx.fillStyle = "#000000";
-                     ctx.fillRect(150, 0, 75, 75);
+                     ctx.fillRect(0, 300, 75, 75);
+                     //x2
                      ctx.fillStyle = "#000000";
-                     ctx.fillRect(300, 0, 75, 75);
+                     ctx.fillRect(250, 150, 75, 75);
+                     //x3
 
                      ctx.strokeStyle = "rgb(255, 215, 0)"
                      ctx.lineWidth = "5"
                      ctx.moveTo(75, 37.5);
-                     ctx.lineTo(150, 37.5);
+                     ctx.lineTo(250, 175);
                      ctx.stroke();
 
                      
-                     ctx.moveTo(225, 37.5);
-                     ctx.lineTo(300, 37.5);
+                     ctx.moveTo(75, 350);
+                     ctx.lineTo(250, 175);
                      ctx.stroke();
 
                      ctx.fillStyle = "#000000";
                      ctx.font = "30px Arial";
                      ctx.fillText("X1", 0, 115);
-                     ctx.fillText("X2", 150, 115);
-                     ctx.fillText("X3", 300, 115);
+                     ctx.fillText("X2", 0, 400);
+                     ctx.fillText("X3", 250, 250);
                </script>
             </div>
 
             <div class="col-1" id="run_simulation">
                <div class="row">
-                  <form class="row" action="{{ url_for('neuroid_group_output') }}" method="POST">
+                  <form class="row" action="{{ url_for('neuroid_group_two_inputs_output') }}" method="POST">
                      <button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid">Run</button>                         
                 </form>
                </div>

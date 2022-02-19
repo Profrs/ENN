@@ -71,3 +71,32 @@ def neuroid_group_output():
     #result = neuroid.run(umbr, beta, kr, maxcount)
 
     return render_template('neuroid_group.html', results=result)
+
+@app.route('/neuroid_group_two_inputs')
+def neuroid_group_two_inputs():
+    return render_template("neuroid_group_two_inputs.html")
+
+@app.route('/neuroid_group_two_inputs.html', methods = ["POST"])    
+def neuroid_group_two_inputs_output():
+    result = []
+    inputs = [1-round(i**2 / 1000**2, 3) for i in reversed(range(1000))] + [1-round(i**2 /1000**2, 3) for i in range(1001)]
+    weights = [0 for i in range(len(inputs))]
+    neuroid_1 = neuroid.Neuroid(umbr=0.1, beta=1.25, kr=2, maxcount=24, t=1)
+    neuroid_1_output = neuroid_1.run_neuroid(inputs = inputs, weights = weights)
+    result.extend(neuroid_1_output)
+    result.append('@')
+    inputs2 = [0 for i in range(1)] + [0.5 for i in range(999)] + [0.5 for i in range(1000)] + [0 for i in range(1)]
+    weights = [0 for i in range(len(inputs2))]
+    neuroid2 = neuroid.Neuroid(umbr=0.1, beta=1.25, kr=2, maxcount=24, t=1)
+    neuroid_2_output = neuroid2.run_neuroid(inputs = inputs2, weights = weights)
+    result.extend(neuroid_2_output)
+    result.append('@')
+    inputs3 = [x - y for (x,y) in zip(inputs, inputs2)] 
+    weights = [0 for i in range(len(inputs3))]
+    neuroid3 = neuroid.Neuroid(umbr=0.1, beta=1.25, kr=2, maxcount=24, t=1)
+    neuroid_3_output = neuroid3.run_neuroid(inputs = inputs3, weights = weights)
+    result.extend(neuroid_3_output)
+    #result = neuroid.run(umbr, beta, kr, maxcount)
+    #result = neuroid.run(umbr, beta, kr, maxcount)
+
+    return render_template('neuroid_group_two_inputs.html', results=result)
