@@ -5,6 +5,7 @@ from flask import redirect
 from flask import g 
 
 import neuroid
+import numpy as np
 
 app = Flask(__name__)
 
@@ -71,6 +72,7 @@ def neuroid_group_output():
     #result = neuroid.run(umbr, beta, kr, maxcount)
 
     return render_template('neuroid_group.html', results=result)
+
 
 @app.route('/neuroid_group_two_inputs')
 def neuroid_group_two_inputs():
