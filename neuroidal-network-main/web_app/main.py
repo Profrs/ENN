@@ -93,7 +93,7 @@ def neuroid_group_two_inputs_output():
     neuroid_2_output = neuroid2.run_neuroid(inputs = inputs2, weights = weights)
     result.extend(neuroid_2_output)
     result.append('@')
-    inputs3 = [x - y for (x,y) in zip(inputs, inputs2)] 
+    inputs3 = [x - y for (x,y) in zip(neuroid_1_output, neuroid_2_output)] 
     weights = [0 for i in range(len(inputs3))]
     neuroid3 = neuroid.Neuroid(umbr=0.1, beta=1.25, kr=2, maxcount=24, t=1)
     neuroid_3_output = neuroid3.run_neuroid(inputs = inputs3, weights = weights)
