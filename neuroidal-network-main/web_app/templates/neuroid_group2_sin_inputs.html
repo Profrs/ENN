@@ -214,10 +214,10 @@
          <div class="container">
          <div class="row">
             <div class="col-5">
-               <canvas id="neuroud_grouping" width="400" height="400">
+               <canvas id="neuroid_grouping" width="400" height="400">
                </canvas>
                <script>
-                     var canvas = document.getElementById("neuroud_grouping");
+                     var canvas = document.getElementById("neuroid_grouping");
                      var ctx = canvas.getContext("2d");
                      ctx.fillStyle = "#000000";
                      ctx.fillRect(0, 0, 75, 75);
@@ -250,7 +250,7 @@
 
             <div class="col-1" id="run_simulation">
                <div class="row">
-                  <form class="row" action="{{ url_for('neuroid_group_two_inputs_output') }}" method="POST">
+                  <form class="row" action="{{ url_for('neuroid_group2_sin_inputs_output') }}" method="POST">
                      <button type="submit" class="btn btn-danger" id="sumbitCustomNeuroid">Run</button>                         
                 </form>
                </div>
